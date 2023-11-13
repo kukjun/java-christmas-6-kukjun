@@ -3,9 +3,10 @@
 ---
 
 ### 기능 개발 목록
-- [ ] Event Planner
-- [ ] Event Planner UI
+- [x] Event Planner
+- [x] Event Planner UI
 - [ ] Order
 - [ ] Discount
 - [ ] Freebie
 - [ ] Badge
+
