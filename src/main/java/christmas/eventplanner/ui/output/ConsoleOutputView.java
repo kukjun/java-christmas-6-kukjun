@@ -1,8 +1,8 @@
 package christmas.eventplanner.ui.output;
 
-import christmas.eventplanner.badge.Badge;
-import christmas.eventplanner.discount.Discount;
-import christmas.eventplanner.order.Order;
+import christmas.eventplanner.badge.BadgeImpl;
+import christmas.eventplanner.discount.DiscountImpl;
+import christmas.eventplanner.order.OrderImpl;
 
 import java.util.List;
 
@@ -24,9 +24,9 @@ public class ConsoleOutputView implements OutputView {
         System.out.println("12월 " + day + "일에 우테코 식당에서 받을 이벤트 혜택 미리 보기!");
     }
 
-    public void showOrderMenu(List<Order> orders) {
+    public void showOrderMenu(List<OrderImpl> orders) {
         System.out.println("<주문 메뉴>");
-        for (Order order : orders) {
+        for (OrderImpl order : orders) {
             System.out.println(order.toString());
         }
     }
@@ -36,14 +36,14 @@ public class ConsoleOutputView implements OutputView {
         System.out.println(orderPrice + "원");
     }
 
-    public void showGifts(Order order) {
+    public void showGifts(OrderImpl order) {
         System.out.println("<증정 메뉴>");
         System.out.println(order.toString());
     }
 
-    public void showBenefits(List<Discount> discountList) {
+    public void showBenefits(List<DiscountImpl> discountList) {
         System.out.println("<혜택 내역>");
-        for (Discount discount : discountList) {
+        for (DiscountImpl discount : discountList) {
             System.out.println(discount.toString());
         }
     }
@@ -58,7 +58,7 @@ public class ConsoleOutputView implements OutputView {
         System.out.println(payment);
     }
 
-    public void showEventBadge(Badge badge) {
+    public void showEventBadge(BadgeImpl badge) {
         System.out.println("<12월 이벤트 배지>");
         System.out.println(badge.toString());
     }

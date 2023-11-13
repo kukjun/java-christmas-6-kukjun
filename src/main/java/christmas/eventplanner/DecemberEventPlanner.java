@@ -1,13 +1,16 @@
 package christmas.eventplanner;
 
+import christmas.eventplanner.order.MenuItem;
 import christmas.eventplanner.order.Order;
+import christmas.eventplanner.order.OrderImpl;
 import christmas.eventplanner.ui.EventPlannerUI;
 
 import java.util.LinkedList;
 import java.util.List;
 import java.util.Map;
+import java.util.stream.Collectors;
 
-public class DecemberEventPlanner implements EventPlanner{
+public class DecemberEventPlanner implements EventPlanner {
 
     private final EventPlannerUI ui;
 
@@ -25,9 +28,12 @@ public class DecemberEventPlanner implements EventPlanner{
         System.out.println("rawOrders = " + rawOrders);
         ui.showPreviewEvent(day);
 
-        List<Order> orders = new LinkedList<>();
-        // map -> order list 변환 필요
-//        ui.showOrderMenu(orders);
+        List<OrderImpl> orders = rawOrders.entrySet().stream()
+                .map(entry -> new Order(MenuItem.getMenuItemByName(entry.getKey()), entry.getValue()))
+                .collect(Collectors.toList());
+
+        ui.showOrderMenu(orders);
+
         int orderPrice = 50000;
         ui.showOrderPriceBeforeDiscount(orderPrice);
 
