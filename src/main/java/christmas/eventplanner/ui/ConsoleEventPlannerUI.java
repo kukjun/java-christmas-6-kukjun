@@ -1,10 +1,9 @@
 package christmas.eventplanner.ui;
 
-import christmas.eventplanner.badge.Badge;
-import christmas.eventplanner.discount.Discount;
-import christmas.eventplanner.order.Order;
+import christmas.eventplanner.badge.BadgeImpl;
+import christmas.eventplanner.discount.DiscountImpl;
+import christmas.eventplanner.order.OrderImpl;
 import christmas.eventplanner.ui.input.InputView;
-import christmas.eventplanner.ui.output.ConsoleOutputView;
 import christmas.eventplanner.ui.output.OutputView;
 
 import java.util.List;
@@ -32,7 +31,7 @@ public class ConsoleEventPlannerUI implements EventPlannerUI {
 
     @Override
     public int inputRestaurantVisitDay() {
-        return inputView.inputNumber();
+        return inputView.inputDay();
     }
 
     @Override
@@ -51,7 +50,7 @@ public class ConsoleEventPlannerUI implements EventPlannerUI {
     }
 
     @Override
-    public void showOrderMenu(List<Order> orders) {
+    public void showOrderMenu(List<OrderImpl> orders) {
         outputView.showOrderMenu(orders);
     }
 
@@ -61,12 +60,12 @@ public class ConsoleEventPlannerUI implements EventPlannerUI {
     }
 
     @Override
-    public void showGifts(Order order) {
+    public void showGifts(OrderImpl order) {
         outputView.showGifts(order);
     }
 
     @Override
-    public void showBenefits(List<Discount> discountList) {
+    public void showBenefits(List<DiscountImpl> discountList) {
         outputView.showBenefits(discountList);
     }
 
@@ -81,7 +80,7 @@ public class ConsoleEventPlannerUI implements EventPlannerUI {
     }
 
     @Override
-    public void showEventBadge(Badge badge) {
+    public void showEventBadge(BadgeImpl badge) {
         outputView.showEventBadge(badge);
     }
 }

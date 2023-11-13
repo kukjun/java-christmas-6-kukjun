@@ -1,4 +1,4 @@
 package christmas.eventplanner.badge;
 
-public interface Badge {
+public interface BadgeImpl {
 }

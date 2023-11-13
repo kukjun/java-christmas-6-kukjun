@@ -1,4 +1,4 @@
 package christmas.eventplanner.discount;
 
-public interface Discount {
+public interface DiscountImpl {
 }
