@@ -41,4 +41,19 @@ Formatter 를 통해 int를 문제에서 요구하는 문자열로 변환
 - [x] 상수 Enum으로 모아서 처리
 - [x] 구현 Method 분리
 
+<br>
+<br>
+<br>
 
+### 테스트 코드
+
+> Unit
+- [x] order
+- [x] badge
+- [x] discount
+
+<br>
+<br>
+
+> Integation
+- [ ] DecemberEventPlanner
