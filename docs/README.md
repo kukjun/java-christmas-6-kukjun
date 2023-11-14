@@ -56,4 +56,15 @@ Formatter 를 통해 int를 문제에서 요구하는 문자열로 변환
 <br>
 
 > Integation
-- [ ] DecemberEventPlanner
+- [x] DecemberEventPlanner
+
+
+통합테스트를 진행하는 경우, 입출력 값 지정을 미리 할 수 없어 테스트를 진행하지 못함. 따라서, Application Test 방식을 따라서, 구혀함.
+
+<br>
+<br>
+<br>
+
+## 추가 사항
+
+1. 사용자 입력을 받되 명확한 에러메시지를 지정하지 않은 경우, 임의로 에러메시지를 생성했음.
