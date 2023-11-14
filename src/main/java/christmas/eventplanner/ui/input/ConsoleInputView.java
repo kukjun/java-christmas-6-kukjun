@@ -1,7 +1,7 @@
 package christmas.eventplanner.ui.input;
 
 import camp.nextstep.edu.missionutils.Console;
-import christmas.eventplanner.order.MenuItem;
+import christmas.eventplanner.order.menu.MenuItem;
 
 import java.util.*;
 import java.util.stream.Collectors;
@@ -21,7 +21,7 @@ public class ConsoleInputView implements InputView {
 
                 validateDayRange(day);
 
-                validInput = true; // 유효한 입력을 받았으므로 반복문 탈출
+                validInput = true;
             } catch (NumberFormatException e) {
                 System.out.println("[ERROR] 유효하지 않은 날짜입니다. 다시 입력해 주세요.");
             } catch (IllegalArgumentException e) {
@@ -33,13 +33,9 @@ public class ConsoleInputView implements InputView {
 
     }
 
-    private void validateDayRange(int day) {
-        if (day < DAY_START || day > DAY_END) {
-            throw new IllegalArgumentException("[ERROR] 유효하지 않은 날짜입니다. 다시 입력해 주세요.");
-        }
 
-    }
 
+    // TODO : 음료만 주문한 경우 Validation 추가
     public Map<String, Integer> inputOrderAndCount() {
         Map<String, Integer> orders = new HashMap<>();
         boolean validInput = false;
@@ -105,5 +101,11 @@ public class ConsoleInputView implements InputView {
         }
     }
 
+    private void validateDayRange(int day) {
+        if (day < DAY_START || day > DAY_END) {
+            throw new IllegalArgumentException("[ERROR] 유효하지 않은 날짜입니다. 다시 입력해 주세요.");
+        }
+
+    }
 
 }

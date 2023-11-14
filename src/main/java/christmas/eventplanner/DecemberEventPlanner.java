@@ -1,6 +1,9 @@
 package christmas.eventplanner;
 
-import christmas.eventplanner.order.MenuItem;
+import christmas.eventplanner.badge.BadgeImpl;
+import christmas.eventplanner.badge.EventBadge;
+import christmas.eventplanner.discount.*;
+import christmas.eventplanner.order.menu.MenuItem;
 import christmas.eventplanner.order.Order;
 import christmas.eventplanner.order.OrderImpl;
 import christmas.eventplanner.ui.EventPlannerUI;
@@ -29,28 +32,61 @@ public class DecemberEventPlanner implements EventPlanner {
         ui.showPreviewEvent(day);
 
         List<OrderImpl> orders = rawOrders.entrySet().stream()
-                .map(entry -> new Order(MenuItem.getMenuItemByName(entry.getKey()), entry.getValue()))
+                .map(entry -> new Order(MenuItem.getMenuItemByName(entry.getKey()), entry.getValue(), true))
                 .collect(Collectors.toList());
 
         ui.showOrderMenu(orders);
 
-        int orderPrice = 50000;
+        int orderPrice = 0;
+        for (OrderImpl order : orders) {
+            orderPrice += order.getOrderPrice();
+        }
+
         ui.showOrderPriceBeforeDiscount(orderPrice);
 
-        // 샴페인 order로 추가
-//        ui.showGifts(order);
+        List<DiscountImpl> discounts = new LinkedList<>();
+        List<DiscountImpl> benefitDiscounts = new LinkedList<>();
+
+        // 증정
+        GiftDiscount giftDiscount = new GiftDiscount(orders);
+        if(giftDiscount.isBenefit()) {
+            Order order = new Order(MenuItem.CHAMPAGNE, 1, false);
+            orders.add(order);
+            benefitDiscounts.add(giftDiscount);
+            ui.showGifts(order);
+        }
+
+        discounts.add(new DDayDiscount(day, orders));
+        discounts.add(new SpecialDiscount(day, orders));
+        discounts.add(new WeekdayDiscount(day, orders));
+        discounts.add(new WeekendDiscount(day, orders));
+
+        for (DiscountImpl discount : discounts) {
+            if (discount.isBenefit()) {
+                benefitDiscounts.add(discount);
+            }
+        }
 
         // 할인 목록 추가
-//        ui.showBenefits(discounts);
+        ui.showBenefits(benefitDiscounts);
 
-        int sum = 1000;
-        ui.showSumBenefits(sum);
+        int benefitSum = 0;
+        for(DiscountImpl discount : benefitDiscounts) {
+            benefitSum+= discount.discount();
+        }
+        ui.showSumBenefits(benefitSum);
 
-        int payment = 9000;
+        int totalOrderPrice = 0;
+        for (OrderImpl order : orders) {
+            totalOrderPrice += order.getOrderPrice();
+        }
+
+        int payment = totalOrderPrice - benefitSum;
+
         ui.showPaymentAmountAfterDiscount(payment);
 
-        // 뱃지 추가
-//        ui.showEventBadge(badge);
+        BadgeImpl badge = new EventBadge(benefitSum);
+        ui.showEventBadge(badge);
 
     }
 }
