@@ -7,7 +7,6 @@ import christmas.eventplanner.util.NumberFormatter;
 
 import java.util.List;
 
-// TODO 숫자 10000 -> 10,000으로 변경 하는 방법 추후 적용
 public class ConsoleOutputView implements OutputView {
     public void showEventPlanner() {
         System.out.println("안녕하세요! 우테코 식당 12월 이벤트 플래너입니다.");

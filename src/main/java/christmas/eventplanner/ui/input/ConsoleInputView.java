@@ -10,6 +10,7 @@ public class ConsoleInputView implements InputView {
 
     public static final int DAY_START = 1;
     public static final int DAY_END = 31;
+
     public int inputDay() {
         int day = 0;
         boolean validInput = false;
@@ -34,8 +35,6 @@ public class ConsoleInputView implements InputView {
     }
 
 
-
-    // TODO : 음료만 주문한 경우 Validation 추가
     public Map<String, Integer> inputOrderAndCount() {
         Map<String, Integer> orders = new HashMap<>();
         boolean validInput = false;
@@ -45,6 +44,7 @@ public class ConsoleInputView implements InputView {
                 String input = Console.readLine();
                 orders = parseAndValidateOrder(input);
                 validateTotalQuantity(orders);
+                validateTotalCategoryOnlyDrink(orders);
                 validInput = true;
             } catch (IllegalArgumentException | IllegalStateException e) {
                 System.out.println(e.getMessage());
@@ -56,7 +56,7 @@ public class ConsoleInputView implements InputView {
 
     // Validation 검사
 
-    // 중복 Validation
+    // 중복 Validation + 기타 Validation
     private Map<String, Integer> parseAndValidateOrder(String input) {
         Set<String> seenItems = new HashSet<>();
 
@@ -98,6 +98,14 @@ public class ConsoleInputView implements InputView {
         int totalQuantity = orders.values().stream().mapToInt(Integer::intValue).sum();
         if (totalQuantity > 20) {
             throw new IllegalArgumentException("[ERROR] 주문의 총 개수가 20개를 초과합니다. 다시 입력해 주세요.");
+        }
+    }
+
+    private void validateTotalCategoryOnlyDrink(Map<String, Integer> orders) {
+        boolean allDrinks = orders.keySet().stream()
+                .allMatch(item -> MenuItem.getMenuItemByName(item).getCategory().equals("음료"));
+        if (allDrinks) {
+            throw new IllegalArgumentException("[ERROR] 음료만 주문한 경우 주문할 수 없습니다. 다시 입력해 주세요.");
         }
     }
 
