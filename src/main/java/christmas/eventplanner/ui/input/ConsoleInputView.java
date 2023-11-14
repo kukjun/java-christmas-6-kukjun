@@ -1,15 +1,14 @@
 package christmas.eventplanner.ui.input;
 
 import camp.nextstep.edu.missionutils.Console;
-import christmas.eventplanner.order.menu.MenuItem;
+import christmas.eventplanner.util.constant.MenuItem;
+import christmas.eventplanner.util.constant.ui.input.InputConstants;
+import christmas.eventplanner.util.constant.ui.input.InputError;
 
 import java.util.*;
 import java.util.stream.Collectors;
 
 public class ConsoleInputView implements InputView {
-
-    public static final int DAY_START = 1;
-    public static final int DAY_END = 31;
 
     public int inputDay() {
         int day = 0;
@@ -24,7 +23,7 @@ public class ConsoleInputView implements InputView {
 
                 validInput = true;
             } catch (NumberFormatException e) {
-                System.out.println("[ERROR] 유효하지 않은 날짜입니다. 다시 입력해 주세요.");
+                System.out.println(InputError.INVALID_SELECT_DAY.getErrorMessage());
             } catch (IllegalArgumentException e) {
                 System.out.println(e.getMessage());
             }
@@ -60,11 +59,11 @@ public class ConsoleInputView implements InputView {
     private Map<String, Integer> parseAndValidateOrder(String input) {
         Set<String> seenItems = new HashSet<>();
 
-        return Arrays.stream(input.split(","))
+        return Arrays.stream(input.split(InputConstants.SPLIT_ORDER))
                 .map(this::splitAndValidateOrder)
                 .peek(parts -> {
                     if (!seenItems.add(parts[0])) {
-                        throw new IllegalArgumentException("[ERROR] 중복된 메뉴 항목입니다. 다시 입력해 주세요.");
+                        throw new IllegalArgumentException(InputError.MENU_OVERLAP.getErrorMessage());
                     }
                 })
                 .collect(Collectors.toMap(parts -> parts[0], parts -> Integer.parseInt(parts[1])));
@@ -72,9 +71,9 @@ public class ConsoleInputView implements InputView {
 
     // 문자열 형식 Validation
     private String[] splitAndValidateOrder(String order) {
-        String[] parts = order.split("-");
+        String[] parts = order.split(InputConstants.SPLIT_COUNT);
         if (parts.length != 2 || !isValidOrder(parts)) {
-            throw new IllegalArgumentException("[ERROR] 유효하지 않은 주문입니다. 다시 입력해 주세요.");
+            throw new IllegalArgumentException(InputError.MENU_MISMATCHING.getErrorMessage());
         }
 
         return new String[]{parts[0].trim(), parts[1].trim()};
@@ -97,21 +96,21 @@ public class ConsoleInputView implements InputView {
     private void validateTotalQuantity(Map<String, Integer> orders) {
         int totalQuantity = orders.values().stream().mapToInt(Integer::intValue).sum();
         if (totalQuantity > 20) {
-            throw new IllegalArgumentException("[ERROR] 주문의 총 개수가 20개를 초과합니다. 다시 입력해 주세요.");
+            throw new IllegalArgumentException(InputError.EXCEED_ORDER_COUNTS.getErrorMessage());
         }
     }
 
     private void validateTotalCategoryOnlyDrink(Map<String, Integer> orders) {
         boolean allDrinks = orders.keySet().stream()
-                .allMatch(item -> MenuItem.getMenuItemByName(item).getCategory().equals("음료"));
+                .allMatch(item -> MenuItem.getMenuItemByName(item).getCategory().equals(InputConstants.DRINK));
         if (allDrinks) {
-            throw new IllegalArgumentException("[ERROR] 음료만 주문한 경우 주문할 수 없습니다. 다시 입력해 주세요.");
+            throw new IllegalArgumentException(InputError.ORDER_ONLY_DRINK.getErrorMessage());
         }
     }
 
     private void validateDayRange(int day) {
-        if (day < DAY_START || day > DAY_END) {
-            throw new IllegalArgumentException("[ERROR] 유효하지 않은 날짜입니다. 다시 입력해 주세요.");
+        if (day < InputConstants.DAY_START || day > InputConstants.DAY_END) {
+            throw new IllegalArgumentException(InputError.INVALID_SELECT_DAY.getErrorMessage());
         }
 
     }

@@ -2,18 +2,13 @@ package christmas.eventplanner.discount;
 
 import christmas.eventplanner.order.OrderImpl;
 import christmas.eventplanner.util.NumberFormatter;
+import christmas.eventplanner.util.constant.discount.calendar.WeekendDiscountCalendar;
 
-import java.util.Arrays;
-import java.util.HashSet;
 import java.util.List;
-import java.util.Set;
+
+import static christmas.eventplanner.util.constant.discount.DiscountConstants.*;
 
 public class WeekendDiscount implements DiscountImpl {
-    private static final Set<Integer> WEEKEND_DISCOUNT_DAYS =
-            new HashSet<>(Arrays.asList(1, 2, 8, 9, 15, 16, 22, 23, 29, 30));
-    private static final int MINIMUM_EVENT_DISCOUNT_PRICE = 10000;
-    private static final String DISCOUNT_CATEGORY = "메인";
-    private static final int DEFAULT_DISCOUNT = 2023;
     private final int day;
     private final List<OrderImpl> orders;
 
@@ -26,8 +21,8 @@ public class WeekendDiscount implements DiscountImpl {
     public int discount() {
         int discountSum = 0;
         for (OrderImpl order : orders) {
-            if (order.isEligibleForDiscount() && order.getMenuItemCategory().equals(DISCOUNT_CATEGORY)) {
-                discountSum += DEFAULT_DISCOUNT * order.getCount();
+            if (order.isEligibleForDiscount() && order.getMenuItemCategory().equals(WEEKEND_DISCOUNT_CATEGORY)) {
+                discountSum += WEEKEND_DEFAULT_DISCOUNT * order.getCount();
             }
         }
         return discountSum;
@@ -39,11 +34,11 @@ public class WeekendDiscount implements DiscountImpl {
         boolean isDiscountCategory = false;
         for (OrderImpl order : orders) {
             sum += order.getOrderPrice();
-            if (order.getMenuItemCategory().equals(DISCOUNT_CATEGORY)) {
+            if (order.getMenuItemCategory().equals(WEEKEND_DISCOUNT_CATEGORY)) {
                 isDiscountCategory = true;
             }
         }
-        if (sum >= MINIMUM_EVENT_DISCOUNT_PRICE && WEEKEND_DISCOUNT_DAYS.contains(day) && isDiscountCategory) {
+        if (sum >= WEEKEND_MINIMUM_EVENT_DISCOUNT_PRICE && WeekendDiscountCalendar.isDiscountDay(day) && isDiscountCategory) {
             return true;
         }
         return false;

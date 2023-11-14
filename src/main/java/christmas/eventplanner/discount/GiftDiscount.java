@@ -5,10 +5,10 @@ import christmas.eventplanner.util.NumberFormatter;
 
 import java.util.List;
 
+import static christmas.eventplanner.util.constant.discount.DiscountConstants.*;
+
 public class GiftDiscount implements DiscountImpl {
 
-    private static final int MINIMUM_GIFT_DISCOUNT_PRICE = 120000;
-    private static final int DEFAULT_DISCOUNT = 25000;
 
     private final List<OrderImpl> orders;
 
@@ -18,7 +18,7 @@ public class GiftDiscount implements DiscountImpl {
 
     @Override
     public int discount() {
-        return DEFAULT_DISCOUNT;
+        return GIFT_DEFAULT_DISCOUNT;
     }
 
     @Override
@@ -27,7 +27,7 @@ public class GiftDiscount implements DiscountImpl {
         for (OrderImpl order : orders) {
             sum += order.getOrderPrice();
         }
-        if (sum >= MINIMUM_GIFT_DISCOUNT_PRICE) {
+        if (sum >= GIFT_MINIMUM_GIFT_DISCOUNT_PRICE) {
             return true;
         }
         return false;
