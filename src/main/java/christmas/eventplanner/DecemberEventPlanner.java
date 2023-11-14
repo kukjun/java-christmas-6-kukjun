@@ -1,7 +1,9 @@
 package christmas.eventplanner;
 
+import christmas.eventplanner.badge.BadgeImpl;
+import christmas.eventplanner.badge.EventBadge;
 import christmas.eventplanner.discount.*;
-import christmas.eventplanner.order.MenuItem;
+import christmas.eventplanner.order.menu.MenuItem;
 import christmas.eventplanner.order.Order;
 import christmas.eventplanner.order.OrderImpl;
 import christmas.eventplanner.ui.EventPlannerUI;
@@ -83,8 +85,8 @@ public class DecemberEventPlanner implements EventPlanner {
 
         ui.showPaymentAmountAfterDiscount(payment);
 
-        // 뱃지 추가
-//        ui.showEventBadge(badge);
+        BadgeImpl badge = new EventBadge(benefitSum);
+        ui.showEventBadge(badge);
 
     }
 }

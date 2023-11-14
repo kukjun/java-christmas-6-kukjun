@@ -1,6 +1,7 @@
 package christmas.eventplanner.discount;
 
 import christmas.eventplanner.order.OrderImpl;
+import christmas.eventplanner.util.NumberFormatter;
 
 import java.util.Arrays;
 import java.util.HashSet;
@@ -26,7 +27,7 @@ public class WeekendDiscount implements DiscountImpl {
         int discountSum = 0;
         for (OrderImpl order : orders) {
             if (order.isEligibleForDiscount() && order.getMenuItemCategory().equals(DISCOUNT_CATEGORY)) {
-                discountSum += DEFAULT_DISCOUNT;
+                discountSum += DEFAULT_DISCOUNT * order.getCount();
             }
         }
         return discountSum;
@@ -35,10 +36,14 @@ public class WeekendDiscount implements DiscountImpl {
     @Override
     public boolean isBenefit() {
         int sum = 0;
+        boolean isDiscountCategory = false;
         for (OrderImpl order : orders) {
             sum += order.getOrderPrice();
+            if (order.getMenuItemCategory().equals(DISCOUNT_CATEGORY)) {
+                isDiscountCategory = true;
+            }
         }
-        if (sum >= MINIMUM_EVENT_DISCOUNT_PRICE && WEEKEND_DISCOUNT_DAYS.contains(day)) {
+        if (sum >= MINIMUM_EVENT_DISCOUNT_PRICE && WEEKEND_DISCOUNT_DAYS.contains(day) && isDiscountCategory) {
             return true;
         }
         return false;
@@ -46,6 +51,6 @@ public class WeekendDiscount implements DiscountImpl {
 
     @Override
     public String toString() {
-        return "주말 할인: -" + discount();
+        return "주말 할인: -" + NumberFormatter.formatNumber(discount()) + "원";
     }
 }

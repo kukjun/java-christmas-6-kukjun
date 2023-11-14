@@ -1,5 +1,7 @@
 package christmas.eventplanner.order;
 
+import christmas.eventplanner.order.menu.MenuItem;
+
 public class Order implements OrderImpl {
     private final MenuItem menuItem;
     private final int count;
@@ -11,17 +13,26 @@ public class Order implements OrderImpl {
         this.discountEligible = discountEligible;
     }
 
+    @Override
     public int getOrderPrice() {
         return menuItem.getPrice() * count;
     }
 
+    @Override
+    public int getCount() {
+        return count;
+    }
+
+    @Override
     public String getMenuItemCategory() {
         return menuItem.getCategory();
     }
 
+    @Override
     public boolean isEligibleForDiscount() {
         return discountEligible;
     }
+
 
     @Override
     public String toString() {

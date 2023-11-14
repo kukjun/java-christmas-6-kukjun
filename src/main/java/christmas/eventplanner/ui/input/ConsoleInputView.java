@@ -1,7 +1,7 @@
 package christmas.eventplanner.ui.input;
 
 import camp.nextstep.edu.missionutils.Console;
-import christmas.eventplanner.order.MenuItem;
+import christmas.eventplanner.order.menu.MenuItem;
 
 import java.util.*;
 import java.util.stream.Collectors;

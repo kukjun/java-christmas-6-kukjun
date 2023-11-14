@@ -3,6 +3,7 @@ package christmas.eventplanner.ui.output;
 import christmas.eventplanner.badge.BadgeImpl;
 import christmas.eventplanner.discount.DiscountImpl;
 import christmas.eventplanner.order.OrderImpl;
+import christmas.eventplanner.util.NumberFormatter;
 
 import java.util.List;
 
@@ -35,7 +36,7 @@ public class ConsoleOutputView implements OutputView {
 
     public void showOrderPriceBeforeDiscount(int orderPrice) {
         System.out.println("<할인 전 총주문 금액>");
-        System.out.println(orderPrice + "원");
+        System.out.println(NumberFormatter.formatNumber(orderPrice) + "원");
         System.out.println();
     }
 
@@ -60,13 +61,13 @@ public class ConsoleOutputView implements OutputView {
 
     public void showSumBenefits(int sum) {
         System.out.println("<총혜택 금액>");
-        System.out.println(sum);
+        System.out.println("-" + NumberFormatter.formatNumber(sum) + "원");
         System.out.println();
     }
 
     public void showPaymentAmountAfterDiscount(int payment) {
         System.out.println("<할인 후 예상 결제 금액>");
-        System.out.println(payment);
+        System.out.println(NumberFormatter.formatNumber(payment) + "원");
         System.out.println();
     }
 

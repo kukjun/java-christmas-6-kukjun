@@ -1,6 +1,7 @@
 package christmas.eventplanner.discount;
 
 import christmas.eventplanner.order.OrderImpl;
+import christmas.eventplanner.util.NumberFormatter;
 
 import java.util.List;
 
@@ -34,6 +35,6 @@ public class GiftDiscount implements DiscountImpl {
 
     @Override
     public String toString() {
-        return "증정 이벤트: -" + discount();
+        return "증정 이벤트: -" + NumberFormatter.formatNumber(discount()) + "원";
     }
 }
