@@ -6,12 +6,9 @@ import christmas.eventplanner.util.NumberFormatter;
 
 import java.util.List;
 
+import static christmas.eventplanner.util.constant.discount.DiscountConstants.*;
+
 public class DDayDiscount implements DiscountImpl {
-    private static final int D_DAY_EVENT_START_DAY = 1;
-    private static final int D_DAY_EVENT_END_DAY = 25;
-    private static final int MINIMUM_EVENT_DISCOUNT_PRICE = 10000;
-    private static final int DEFAULT_DISCOUNT = 900;
-    private static final int DISCOUNT_UNIT = 100;
 
     private final List<OrderImpl> orders;
     private final int day;
@@ -23,7 +20,7 @@ public class DDayDiscount implements DiscountImpl {
 
     @Override
     public int discount() {
-        return DEFAULT_DISCOUNT + day * DISCOUNT_UNIT;
+        return D_DAY_DEFAULT_DISCOUNT + day * D_DAY_DISCOUNT_UNIT;
     }
 
     // 없음을 뜨게 하는건 혜택 내역의 열할
@@ -33,7 +30,7 @@ public class DDayDiscount implements DiscountImpl {
         for (OrderImpl order : orders) {
             sum += order.getOrderPrice();
         }
-        if (sum >= MINIMUM_EVENT_DISCOUNT_PRICE && day >= D_DAY_EVENT_START_DAY && day <= D_DAY_EVENT_END_DAY) {
+        if (sum >= D_DAY_MINIMUM_EVENT_DISCOUNT_PRICE && day >= D_DAY_EVENT_START_DAY && day <= D_DAY_EVENT_END_DAY) {
             return true;
         }
         return false;

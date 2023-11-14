@@ -1,4 +1,4 @@
-package christmas.eventplanner.order.menu;
+package christmas.eventplanner.util.constant;
 
 public enum MenuItem {
     // 애피타이저

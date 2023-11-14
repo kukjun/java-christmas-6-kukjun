@@ -2,17 +2,15 @@ package christmas.eventplanner.discount;
 
 import christmas.eventplanner.order.OrderImpl;
 import christmas.eventplanner.util.NumberFormatter;
+import christmas.eventplanner.util.constant.discount.calendar.SpecialDayDiscountCalendar;
 
-import java.util.Arrays;
-import java.util.HashSet;
 import java.util.List;
-import java.util.Set;
+
+import static christmas.eventplanner.util.constant.discount.DiscountConstants.SPECIAL_DEFAULT_DISCOUNT;
+import static christmas.eventplanner.util.constant.discount.DiscountConstants.SPECIAL_MINIMUM_EVENT_DISCOUNT_PRICE;
 
 public class SpecialDiscount implements DiscountImpl {
 
-    private static final Set<Integer> SPECIAL_DISCOUNT_DAYS = new HashSet<>(Arrays.asList(3, 10, 17, 24, 25, 31));
-    private static final int MINIMUM_EVENT_DISCOUNT_PRICE = 10000;
-    private static final int DEFAULT_DISCOUNT = 1000;
     private final int day;
 
     private final List<OrderImpl> orders;
@@ -24,7 +22,7 @@ public class SpecialDiscount implements DiscountImpl {
 
     @Override
     public int discount() {
-        return DEFAULT_DISCOUNT;
+        return SPECIAL_DEFAULT_DISCOUNT;
     }
 
     @Override
@@ -33,7 +31,7 @@ public class SpecialDiscount implements DiscountImpl {
         for (OrderImpl order : orders) {
             sum += order.getOrderPrice();
         }
-        if (sum >= MINIMUM_EVENT_DISCOUNT_PRICE && SPECIAL_DISCOUNT_DAYS.contains(day)) {
+        if (sum >= SPECIAL_MINIMUM_EVENT_DISCOUNT_PRICE && SpecialDayDiscountCalendar.isDiscountDay(day)) {
             return true;
         }
         return false;

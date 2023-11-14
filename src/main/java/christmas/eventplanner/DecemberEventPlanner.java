@@ -3,7 +3,7 @@ package christmas.eventplanner;
 import christmas.eventplanner.badge.BadgeImpl;
 import christmas.eventplanner.badge.EventBadge;
 import christmas.eventplanner.discount.*;
-import christmas.eventplanner.order.menu.MenuItem;
+import christmas.eventplanner.util.constant.MenuItem;
 import christmas.eventplanner.order.Order;
 import christmas.eventplanner.order.OrderImpl;
 import christmas.eventplanner.ui.EventPlannerUI;
@@ -25,10 +25,8 @@ public class DecemberEventPlanner implements EventPlanner {
         ui.showEventPlanner();
         ui.requireRestaurantVisitDay();
         int day = ui.inputRestaurantVisitDay();
-        System.out.println("day = " + day);
         ui.requireOrderAndCounts();
         Map<String, Integer> rawOrders = ui.inputOrderAndCounts();
-        System.out.println("rawOrders = " + rawOrders);
         ui.showPreviewEvent(day);
 
         List<OrderImpl> orders = rawOrders.entrySet().stream()
