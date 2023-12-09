@@ -1,6 +1,6 @@
 package christmas.eventplanner.discount;
 
-import christmas.eventplanner.order.OrderImpl;
+import christmas.eventplanner.order.Order;
 import christmas.eventplanner.util.NumberFormatter;
 import christmas.eventplanner.util.constant.discount.calendar.WeekendDiscountCalendar;
 
@@ -10,9 +10,9 @@ import static christmas.eventplanner.util.constant.discount.DiscountConstants.*;
 
 public class WeekendDiscount implements DiscountImpl {
     private final int day;
-    private final List<OrderImpl> orders;
+    private final List<Order> orders;
 
-    public WeekendDiscount(int day, List<OrderImpl> orders) {
+    public WeekendDiscount(int day, List<Order> orders) {
         this.day = day;
         this.orders = orders;
     }
@@ -20,7 +20,7 @@ public class WeekendDiscount implements DiscountImpl {
     @Override
     public int discount() {
         int discountSum = 0;
-        for (OrderImpl order : orders) {
+        for (Order order : orders) {
             if (order.isEligibleForDiscount() && order.getMenuItemCategory().equals(WEEKEND_DISCOUNT_CATEGORY)) {
                 discountSum += WEEKEND_DEFAULT_DISCOUNT * order.getCount();
             }
@@ -32,7 +32,7 @@ public class WeekendDiscount implements DiscountImpl {
     public boolean isBenefit() {
         int sum = 0;
         boolean isDiscountCategory = false;
-        for (OrderImpl order : orders) {
+        for (Order order : orders) {
             sum += order.getOrderPrice();
             if (order.getMenuItemCategory().equals(WEEKEND_DISCOUNT_CATEGORY)) {
                 isDiscountCategory = true;

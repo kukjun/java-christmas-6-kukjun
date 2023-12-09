@@ -2,7 +2,7 @@ package christmas.eventplanner.ui;
 
 import christmas.eventplanner.badge.BadgeImpl;
 import christmas.eventplanner.discount.DiscountImpl;
-import christmas.eventplanner.order.OrderImpl;
+import christmas.eventplanner.order.Order;
 import christmas.eventplanner.ui.input.InputView;
 import christmas.eventplanner.ui.output.OutputView;
 
@@ -50,7 +50,7 @@ public class ConsoleEventPlannerUI implements EventPlannerUI {
     }
 
     @Override
-    public void showOrderMenu(List<OrderImpl> orders) {
+    public void showOrderMenu(List<Order> orders) {
         outputView.showOrderMenu(orders);
     }
 
@@ -60,7 +60,7 @@ public class ConsoleEventPlannerUI implements EventPlannerUI {
     }
 
     @Override
-    public void showGifts(OrderImpl order) {
+    public void showGifts(Order order) {
         outputView.showGifts(order);
     }
 

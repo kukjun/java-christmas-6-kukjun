@@ -2,7 +2,7 @@ package christmas.eventplanner.ui.output;
 
 import christmas.eventplanner.badge.BadgeImpl;
 import christmas.eventplanner.discount.DiscountImpl;
-import christmas.eventplanner.order.OrderImpl;
+import christmas.eventplanner.order.Order;
 import christmas.eventplanner.util.NumberFormatter;
 import christmas.eventplanner.util.constant.ui.output.OutputMessage;
 
@@ -26,9 +26,9 @@ public class ConsoleOutputView implements OutputView {
         System.out.println();
     }
 
-    public void showOrderMenu(List<OrderImpl> orders) {
+    public void showOrderMenu(List<Order> orders) {
         System.out.println(OutputMessage.ORDER_MENU_TITLE.getMessage());
-        for (OrderImpl order : orders) {
+        for (Order order : orders) {
             System.out.println(order.toString());
         }
         System.out.println();
@@ -40,7 +40,7 @@ public class ConsoleOutputView implements OutputView {
         System.out.println();
     }
 
-    public void showGifts(OrderImpl order) {
+    public void showGifts(Order order) {
         System.out.println(OutputMessage.GIFT_MENU_TITLE.getMessage());
         System.out.println(order.toString());
         System.out.println();

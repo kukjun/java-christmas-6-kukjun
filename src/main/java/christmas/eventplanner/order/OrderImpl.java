@@ -1,11 +1,42 @@
 package christmas.eventplanner.order;
 
-public interface OrderImpl {
+import christmas.eventplanner.util.constant.MenuItem;
 
-    int getOrderPrice();
-    int getCount();
+public class OrderImpl implements Order {
+    private final MenuItem menuItem;
+    private final int count;
+    private final boolean discountEligible;
 
-    String getMenuItemCategory();
+    public OrderImpl(MenuItem menuItem, int count, boolean discountEligible) {
+        this.menuItem = menuItem;
+        this.count = count;
+        this.discountEligible = discountEligible;
+    }
 
-    boolean isEligibleForDiscount();
+    @Override
+    public int getOrderPrice() {
+        return menuItem.getPrice() * count;
+    }
+
+    @Override
+    public int getCount() {
+        return count;
+    }
+
+    @Override
+    public String getMenuItemCategory() {
+        return menuItem.getCategory();
+    }
+
+    @Override
+    public boolean isEligibleForDiscount() {
+        return discountEligible;
+    }
+
+
+    @Override
+    public String toString() {
+        return menuItem.toString() + " " + count + "개";
+    }
+
 }

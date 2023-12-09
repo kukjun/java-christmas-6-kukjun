@@ -14,7 +14,7 @@ class OrderTest {
         int expectedQuantity = 2;
 
         // when
-        OrderImpl order = new Order(expectedItem, expectedQuantity, true);
+        Order order = new OrderImpl(expectedItem, expectedQuantity, true);
 
         // then
         assertThat(order.getOrderPrice()).isEqualTo(expectedItem.getPrice()*expectedQuantity);
@@ -26,7 +26,7 @@ class OrderTest {
         int expectedQuantity = 2;
 
         // when
-        OrderImpl order = new Order(expectedItem, expectedQuantity, true);
+        Order order = new OrderImpl(expectedItem, expectedQuantity, true);
 
         // then
         assertThat(order.toString()).isEqualTo(expectedItem.toString() + " " + expectedQuantity + "개");

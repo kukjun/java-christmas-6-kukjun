@@ -1,6 +1,6 @@
 package christmas.eventplanner.discount;
 
-import christmas.eventplanner.order.OrderImpl;
+import christmas.eventplanner.order.Order;
 import christmas.eventplanner.util.NumberFormatter;
 
 import java.util.List;
@@ -10,9 +10,9 @@ import static christmas.eventplanner.util.constant.discount.DiscountConstants.*;
 public class GiftDiscount implements DiscountImpl {
 
 
-    private final List<OrderImpl> orders;
+    private final List<Order> orders;
 
-    public GiftDiscount(List<OrderImpl> orders) {
+    public GiftDiscount(List<Order> orders) {
         this.orders = orders;
     }
 
@@ -24,7 +24,7 @@ public class GiftDiscount implements DiscountImpl {
     @Override
     public boolean isBenefit() {
         int sum = 0;
-        for (OrderImpl order : orders) {
+        for (Order order : orders) {
             sum += order.getOrderPrice();
         }
         if (sum >= GIFT_MINIMUM_GIFT_DISCOUNT_PRICE) {

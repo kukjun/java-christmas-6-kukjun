@@ -1,6 +1,6 @@
 package christmas.eventplanner.discount;
 
-import christmas.eventplanner.order.OrderImpl;
+import christmas.eventplanner.order.Order;
 import christmas.eventplanner.util.NumberFormatter;
 import christmas.eventplanner.util.constant.discount.calendar.SpecialDayDiscountCalendar;
 
@@ -13,9 +13,9 @@ public class SpecialDiscount implements DiscountImpl {
 
     private final int day;
 
-    private final List<OrderImpl> orders;
+    private final List<Order> orders;
 
-    public SpecialDiscount(int day, List<OrderImpl> orders) {
+    public SpecialDiscount(int day, List<Order> orders) {
         this.day = day;
         this.orders = orders;
     }
@@ -28,7 +28,7 @@ public class SpecialDiscount implements DiscountImpl {
     @Override
     public boolean isBenefit() {
         int sum = 0;
-        for (OrderImpl order : orders) {
+        for (Order order : orders) {
             sum += order.getOrderPrice();
         }
         if (sum >= SPECIAL_MINIMUM_EVENT_DISCOUNT_PRICE && SpecialDayDiscountCalendar.isDiscountDay(day)) {

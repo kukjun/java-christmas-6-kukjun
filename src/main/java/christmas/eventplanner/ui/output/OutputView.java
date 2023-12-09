@@ -2,7 +2,7 @@ package christmas.eventplanner.ui.output;
 
 import christmas.eventplanner.badge.BadgeImpl;
 import christmas.eventplanner.discount.DiscountImpl;
-import christmas.eventplanner.order.OrderImpl;
+import christmas.eventplanner.order.Order;
 
 import java.util.List;
 
@@ -14,11 +14,11 @@ public interface OutputView {
 
     void showPreviewEvent(int day);
 
-    void showOrderMenu(List<OrderImpl> orders);
+    void showOrderMenu(List<Order> orders);
 
     void showOrderPriceBeforeDiscount(int orderPrice) ;
 
-    void showGifts(OrderImpl order) ;
+    void showGifts(Order order) ;
 
     void showBenefits(List<DiscountImpl> discountList) ;
 
