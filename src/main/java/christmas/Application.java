@@ -11,7 +11,6 @@ import christmas.eventplanner.ui.output.OutputView;
 
 public class Application {
     public static void main(String[] args) {
-        // TODO: 프로그램 구현
         OutputView outputView = new ConsoleOutputView();
         InputView inputView = new ConsoleInputView();
         EventPlannerUI eventPlannerUI = new ConsoleEventPlannerUI(inputView, outputView);
