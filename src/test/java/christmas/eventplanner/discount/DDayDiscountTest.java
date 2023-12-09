@@ -24,7 +24,7 @@ class DDayDiscountTest {
         int expectedDiscount = DiscountConstants.D_DAY_DEFAULT_DISCOUNT + DiscountConstants.D_DAY_DISCOUNT_UNIT * day;
 
         // when
-        DiscountImpl discount = new DDayDiscount(day, orders);
+        Discount discount = new DDayDiscount(day, orders);
         int resultDiscount = discount.discount();
 
         // then
@@ -40,7 +40,7 @@ class DDayDiscountTest {
         boolean expectedIsBenefit = false;
 
         // when
-        DiscountImpl discount = new DDayDiscount(day, orders);
+        Discount discount = new DDayDiscount(day, orders);
         boolean resultIsBenefit = discount.isBenefit();
 
         // then
@@ -56,7 +56,7 @@ class DDayDiscountTest {
         boolean expectedIsBenefit = false;
 
         // when
-        DiscountImpl discount = new DDayDiscount(day, orders);
+        Discount discount = new DDayDiscount(day, orders);
         boolean resultIsBenefit = discount.isBenefit();
 
         // then
@@ -72,7 +72,7 @@ class DDayDiscountTest {
         boolean expectedIsBenefit = true;
 
         // when
-        DiscountImpl discount = new DDayDiscount(day, orders);
+        Discount discount = new DDayDiscount(day, orders);
         boolean resultIsBenefit = discount.isBenefit();
 
         // then

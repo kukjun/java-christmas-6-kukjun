@@ -8,7 +8,7 @@ import java.util.List;
 
 import static christmas.eventplanner.util.constant.discount.DiscountConstants.*;
 
-public class DDayDiscount implements DiscountImpl {
+public class DDayDiscount implements Discount {
 
     private final List<Order> orders;
     private final int day;
@@ -34,6 +34,11 @@ public class DDayDiscount implements DiscountImpl {
             return true;
         }
         return false;
+    }
+
+    @Override
+    public String show() {
+        return "크리스마스 디데이 할인: -" + NumberFormatter.formatNumber(discount()) + "원";
     }
 
     @Override

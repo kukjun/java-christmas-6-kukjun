@@ -1,7 +1,7 @@
 package christmas.eventplanner.ui.output;
 
-import christmas.eventplanner.badge.BadgeImpl;
-import christmas.eventplanner.discount.DiscountImpl;
+import christmas.eventplanner.badge.Badge;
+import christmas.eventplanner.discount.Discount;
 import christmas.eventplanner.order.Order;
 import christmas.eventplanner.util.NumberFormatter;
 import christmas.eventplanner.util.constant.ui.output.OutputMessage;
@@ -46,14 +46,14 @@ public class ConsoleOutputView implements OutputView {
         System.out.println();
     }
 
-    public void showBenefits(List<DiscountImpl> discountList) {
+    public void showBenefits(List<Discount> discountList) {
         System.out.println(OutputMessage.BENEFITS_TITLE.getMessage());
         if(discountList.isEmpty()) {
             System.out.println(OutputMessage.NO_BENEFITS.getMessage());
             System.out.println();
             return;
         }
-        for (DiscountImpl discount : discountList) {
+        for (Discount discount : discountList) {
             System.out.println(discount.toString());
         }
         System.out.println();
@@ -71,7 +71,7 @@ public class ConsoleOutputView implements OutputView {
         System.out.println();
     }
 
-    public void showEventBadge(BadgeImpl badge) {
+    public void showEventBadge(Badge badge) {
         System.out.println(OutputMessage.EVENT_BADGE_TITLE.getMessage());
         System.out.println(badge.toString());
         System.out.println();

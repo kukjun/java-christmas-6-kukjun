@@ -2,7 +2,7 @@ package christmas.eventplanner.badge;
 
 import christmas.eventplanner.util.constant.badge.BadgeItem;
 
-public class EventBadge implements BadgeImpl{
+public class EventBadge implements Badge {
 
     private final String name;
 
@@ -20,6 +20,11 @@ public class EventBadge implements BadgeImpl{
             return;
         }
         this.name = BadgeItem.SENTA_BADGE.getName();
+    }
+
+    @Override
+    public String show() {
+        return name;
     }
 
     @Override

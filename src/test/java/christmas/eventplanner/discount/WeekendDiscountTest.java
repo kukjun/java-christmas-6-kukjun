@@ -26,7 +26,7 @@ class WeekendDiscountTest {
         int expectedDiscount = DiscountConstants.WEEKEND_DEFAULT_DISCOUNT * 2;
 
         // when
-        DiscountImpl discount = new WeekendDiscount(day, orders);
+        Discount discount = new WeekendDiscount(day, orders);
         int resultDiscount = discount.discount();
 
         // then
@@ -42,7 +42,7 @@ class WeekendDiscountTest {
         boolean expectedIsBenefit = false;
 
         // when
-        DiscountImpl discount = new WeekendDiscount(day, orders);
+        Discount discount = new WeekendDiscount(day, orders);
         boolean resultIsBenefit = discount.isBenefit();
 
         // then
@@ -58,7 +58,7 @@ class WeekendDiscountTest {
         boolean expectedIsBenefit = false;
 
         // when
-        DiscountImpl discount = new WeekendDiscount(day, orders);
+        Discount discount = new WeekendDiscount(day, orders);
         boolean resultIsBenefit = discount.isBenefit();
 
         // then
@@ -74,7 +74,7 @@ class WeekendDiscountTest {
         boolean expectedIsBenefit = false;
 
         // when
-        DiscountImpl discount = new WeekendDiscount(day, orders);
+        Discount discount = new WeekendDiscount(day, orders);
         boolean resultIsBenefit = discount.isBenefit();
 
         // then
@@ -92,7 +92,7 @@ class WeekendDiscountTest {
         boolean expectedIsBenefit = true;
 
         // when
-        DiscountImpl discount = new WeekendDiscount(day, orders);
+        Discount discount = new WeekendDiscount(day, orders);
         boolean resultIsBenefit = discount.isBenefit();
 
         // then

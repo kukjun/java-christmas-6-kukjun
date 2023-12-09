@@ -8,4 +8,6 @@ public interface Order {
     String getMenuItemCategory();
 
     boolean isEligibleForDiscount();
+
+    String show();
 }

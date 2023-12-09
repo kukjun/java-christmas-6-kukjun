@@ -15,7 +15,7 @@ class EventBadgeTest {
         String expectedName = BadgeItem.NONE_BADGE.getName();
 
         // when
-        BadgeImpl badge = new EventBadge(benefitValue);
+        Badge badge = new EventBadge(benefitValue);
 
         // then
         assertThat(badge.toString()).isEqualTo(expectedName);
@@ -28,7 +28,7 @@ class EventBadgeTest {
         String expectedName = BadgeItem.STAR_BADGE.getName();
 
         // when
-        BadgeImpl badge = new EventBadge(benefitValue);
+        Badge badge = new EventBadge(benefitValue);
 
         // then
         assertThat(badge.toString()).isEqualTo(expectedName);
@@ -41,7 +41,7 @@ class EventBadgeTest {
         String expectedName = BadgeItem.TREE_BADGE.getName();
 
         // when
-        BadgeImpl badge = new EventBadge(benefitValue);
+        Badge badge = new EventBadge(benefitValue);
 
         // then
         assertThat(badge.toString()).isEqualTo(expectedName);
@@ -54,7 +54,7 @@ class EventBadgeTest {
         String expectedName = BadgeItem.SENTA_BADGE.getName();
 
         // when
-        BadgeImpl badge = new EventBadge(benefitValue);
+        Badge badge = new EventBadge(benefitValue);
 
         // then
         assertThat(badge.toString()).isEqualTo(expectedName);

@@ -1,6 +1,6 @@
 package christmas.eventplanner;
 
-import christmas.eventplanner.badge.BadgeImpl;
+import christmas.eventplanner.badge.Badge;
 import christmas.eventplanner.badge.EventBadge;
 import christmas.eventplanner.discount.*;
 import christmas.eventplanner.order.OrderImpl;
@@ -16,7 +16,7 @@ import java.util.stream.Collectors;
 public class DecemberEventPlanner implements EventPlanner {
 
     private final EventPlannerUI ui;
-    private final List<DiscountImpl> benefitDiscounts = new LinkedList<>();
+    private final List<Discount> benefitDiscounts = new LinkedList<>();
 
     public DecemberEventPlanner(EventPlannerUI ui) {
         this.ui = ui;
@@ -84,14 +84,14 @@ public class DecemberEventPlanner implements EventPlanner {
     }
 
     private void findDiscountBenefit(List<Order> orders, int day) {
-        List<DiscountImpl> discounts = new LinkedList<>();
+        List<Discount> discounts = new LinkedList<>();
 
         discounts.add(new DDayDiscount(day, orders));
         discounts.add(new SpecialDiscount(day, orders));
         discounts.add(new WeekdayDiscount(day, orders));
         discounts.add(new WeekendDiscount(day, orders));
 
-        for (DiscountImpl discount : discounts) {
+        for (Discount discount : discounts) {
             if (discount.isBenefit()) {
                 benefitDiscounts.add(discount);
             }
@@ -103,7 +103,7 @@ public class DecemberEventPlanner implements EventPlanner {
 
     private int findBenefitSum() {
         int benefitSum = 0;
-        for(DiscountImpl discount : benefitDiscounts) {
+        for(Discount discount : benefitDiscounts) {
             benefitSum+= discount.discount();
         }
         ui.showSumBenefits(benefitSum);
@@ -122,7 +122,7 @@ public class DecemberEventPlanner implements EventPlanner {
     }
 
     private void findBadge(int benefitSum) {
-        BadgeImpl badge = new EventBadge(benefitSum);
+        Badge badge = new EventBadge(benefitSum);
         ui.showEventBadge(badge);
     }
 

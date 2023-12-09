@@ -22,7 +22,7 @@ class GiftDiscountTest {
         int expectedDiscount = DiscountConstants.GIFT_DEFAULT_DISCOUNT;
 
         // when
-        DiscountImpl discount = new GiftDiscount(orders);
+        Discount discount = new GiftDiscount(orders);
         int resultDiscount = discount.discount();
 
         // then
@@ -37,7 +37,7 @@ class GiftDiscountTest {
         boolean expectedIsBenefit = false;
 
         // when
-        DiscountImpl discount = new GiftDiscount(orders);
+        Discount discount = new GiftDiscount(orders);
         boolean resultIsBenefit = discount.isBenefit();
 
         // then
@@ -53,7 +53,7 @@ class GiftDiscountTest {
         boolean expectedIsBenefit = true;
 
         // when
-        DiscountImpl discount = new GiftDiscount(orders);
+        Discount discount = new GiftDiscount(orders);
         boolean resultIsBenefit = discount.isBenefit();
 
         // then

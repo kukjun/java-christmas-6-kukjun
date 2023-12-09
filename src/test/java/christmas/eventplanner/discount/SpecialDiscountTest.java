@@ -26,7 +26,7 @@ class SpecialDiscountTest {
         int expectedDiscount = DiscountConstants.SPECIAL_DEFAULT_DISCOUNT;
 
         // when
-        DiscountImpl discount = new SpecialDiscount(day, orders);
+        Discount discount = new SpecialDiscount(day, orders);
         int resultDiscount = discount.discount();
 
         // then
@@ -42,7 +42,7 @@ class SpecialDiscountTest {
         boolean expectedIsBenefit = false;
 
         // when
-        DiscountImpl discount = new SpecialDiscount(day, orders);
+        Discount discount = new SpecialDiscount(day, orders);
         boolean resultIsBenefit = discount.isBenefit();
 
         // then
@@ -58,7 +58,7 @@ class SpecialDiscountTest {
         boolean expectedIsBenefit = false;
 
         // when
-        DiscountImpl discount = new SpecialDiscount(day, orders);
+        Discount discount = new SpecialDiscount(day, orders);
         boolean resultIsBenefit = discount.isBenefit();
 
         // then
@@ -74,7 +74,7 @@ class SpecialDiscountTest {
         boolean expectedIsBenefit = true;
 
         // when
-        DiscountImpl discount = new SpecialDiscount(day, orders);
+        Discount discount = new SpecialDiscount(day, orders);
         boolean resultIsBenefit = discount.isBenefit();
 
         // then

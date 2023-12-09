@@ -33,6 +33,10 @@ public class OrderImpl implements Order {
         return discountEligible;
     }
 
+    @Override
+    public String show() {
+        return menuItem.toString() + " " + count + "개";
+    }
 
     @Override
     public String toString() {

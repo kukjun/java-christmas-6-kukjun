@@ -9,7 +9,7 @@ import java.util.List;
 import static christmas.eventplanner.util.constant.discount.DiscountConstants.SPECIAL_DEFAULT_DISCOUNT;
 import static christmas.eventplanner.util.constant.discount.DiscountConstants.SPECIAL_MINIMUM_EVENT_DISCOUNT_PRICE;
 
-public class SpecialDiscount implements DiscountImpl {
+public class SpecialDiscount implements Discount {
 
     private final int day;
 
@@ -35,6 +35,11 @@ public class SpecialDiscount implements DiscountImpl {
             return true;
         }
         return false;
+    }
+
+    @Override
+    public String show() {
+        return "특별 할인: -" + NumberFormatter.formatNumber(discount()) + "원";
     }
 
     @Override

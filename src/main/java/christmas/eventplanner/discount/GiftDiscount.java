@@ -7,7 +7,7 @@ import java.util.List;
 
 import static christmas.eventplanner.util.constant.discount.DiscountConstants.*;
 
-public class GiftDiscount implements DiscountImpl {
+public class GiftDiscount implements Discount {
 
 
     private final List<Order> orders;
@@ -31,6 +31,11 @@ public class GiftDiscount implements DiscountImpl {
             return true;
         }
         return false;
+    }
+
+    @Override
+    public String show() {
+        return "증정 이벤트: -" + NumberFormatter.formatNumber(discount()) + "원";
     }
 
     @Override
