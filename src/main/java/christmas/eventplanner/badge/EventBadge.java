@@ -4,8 +4,6 @@ import christmas.eventplanner.util.constant.badge.BadgeItem;
 
 public class EventBadge implements BadgeImpl{
 
-
-
     private final String name;
 
     public EventBadge(int sumBenefit) {
