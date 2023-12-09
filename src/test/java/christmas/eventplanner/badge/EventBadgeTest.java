@@ -18,7 +18,7 @@ class EventBadgeTest {
         Badge badge = new EventBadge(benefitValue);
 
         // then
-        assertThat(badge.toString()).isEqualTo(expectedName);
+        assertThat(badge.show()).isEqualTo(expectedName);
     }
 
     @Test
@@ -31,7 +31,7 @@ class EventBadgeTest {
         Badge badge = new EventBadge(benefitValue);
 
         // then
-        assertThat(badge.toString()).isEqualTo(expectedName);
+        assertThat(badge.show()).isEqualTo(expectedName);
     }
 
     @Test
@@ -44,7 +44,7 @@ class EventBadgeTest {
         Badge badge = new EventBadge(benefitValue);
 
         // then
-        assertThat(badge.toString()).isEqualTo(expectedName);
+        assertThat(badge.show()).isEqualTo(expectedName);
     }
 
     @Test
@@ -57,6 +57,6 @@ class EventBadgeTest {
         Badge badge = new EventBadge(benefitValue);
 
         // then
-        assertThat(badge.toString()).isEqualTo(expectedName);
+        assertThat(badge.show()).isEqualTo(expectedName);
     }
 }

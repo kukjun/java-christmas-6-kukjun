@@ -29,7 +29,7 @@ class OrderTest {
         Order order = new OrderImpl(expectedItem, expectedQuantity, true);
 
         // then
-        assertThat(order.toString()).isEqualTo(expectedItem.toString() + " " + expectedQuantity + "개");
+        assertThat(order.show()).isEqualTo(expectedItem.toString() + " " + expectedQuantity + "개");
     }
 
 }

@@ -29,6 +29,11 @@ public class OrderImpl implements Order {
     }
 
     @Override
+    public boolean isEqualsCategory(String categoryName) {
+        return menuItem.isEqualCategoryName(categoryName);
+    }
+
+    @Override
     public boolean isEligibleForDiscount() {
         return discountEligible;
     }

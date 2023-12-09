@@ -21,7 +21,7 @@ public class WeekendDiscount implements Discount {
     public int discount() {
         int discountSum = 0;
         for (Order order : orders) {
-            if (order.isEligibleForDiscount() && order.getMenuItemCategory().equals(WEEKEND_DISCOUNT_CATEGORY)) {
+            if (order.isEligibleForDiscount() && order.isEqualsCategory(WEEKEND_DISCOUNT_CATEGORY)) {
                 discountSum += WEEKEND_DEFAULT_DISCOUNT * order.getCount();
             }
         }

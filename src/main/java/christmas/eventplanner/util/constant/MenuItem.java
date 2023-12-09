@@ -40,6 +40,10 @@ public enum MenuItem {
         this.price = price;
     }
 
+    public boolean isEqualCategoryName(String categoryName) {
+        return  category.equals(categoryName);
+    }
+
     public String getCategory() {
         return category;
     }

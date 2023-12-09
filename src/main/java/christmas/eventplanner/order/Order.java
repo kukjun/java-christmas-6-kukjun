@@ -7,6 +7,8 @@ public interface Order {
 
     String getMenuItemCategory();
 
+    boolean isEqualsCategory(String categoryName);
+
     boolean isEligibleForDiscount();
 
     String show();
