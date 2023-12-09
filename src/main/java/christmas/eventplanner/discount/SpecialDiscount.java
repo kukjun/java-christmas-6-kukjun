@@ -42,8 +42,4 @@ public class SpecialDiscount implements Discount {
         return "특별 할인: -" + NumberFormatter.formatNumber(discount()) + "원";
     }
 
-    @Override
-    public String toString() {
-        return "특별 할인: -" + NumberFormatter.formatNumber(discount()) + "원";
-    }
 }

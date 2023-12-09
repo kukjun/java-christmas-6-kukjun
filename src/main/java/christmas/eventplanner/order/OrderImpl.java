@@ -38,9 +38,4 @@ public class OrderImpl implements Order {
         return menuItem.toString() + " " + count + "개";
     }
 
-    @Override
-    public String toString() {
-        return menuItem.toString() + " " + count + "개";
-    }
-
 }

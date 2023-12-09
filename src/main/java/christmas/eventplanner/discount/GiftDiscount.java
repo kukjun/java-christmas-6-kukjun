@@ -38,8 +38,4 @@ public class GiftDiscount implements Discount {
         return "증정 이벤트: -" + NumberFormatter.formatNumber(discount()) + "원";
     }
 
-    @Override
-    public String toString() {
-        return "증정 이벤트: -" + NumberFormatter.formatNumber(discount()) + "원";
-    }
 }

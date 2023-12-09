@@ -40,9 +40,4 @@ public class DDayDiscount implements Discount {
     public String show() {
         return "크리스마스 디데이 할인: -" + NumberFormatter.formatNumber(discount()) + "원";
     }
-
-    @Override
-    public String toString() {
-        return "크리스마스 디데이 할인: -" + NumberFormatter.formatNumber(discount()) + "원";
-    }
 }

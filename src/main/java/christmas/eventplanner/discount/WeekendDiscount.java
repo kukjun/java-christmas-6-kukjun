@@ -49,8 +49,4 @@ public class WeekendDiscount implements Discount {
         return "주말 할인: -" + NumberFormatter.formatNumber(discount()) + "원";
     }
 
-    @Override
-    public String toString() {
-        return "주말 할인: -" + NumberFormatter.formatNumber(discount()) + "원";
-    }
 }

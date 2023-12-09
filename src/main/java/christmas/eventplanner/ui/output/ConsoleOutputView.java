@@ -42,7 +42,7 @@ public class ConsoleOutputView implements OutputView {
 
     public void showGifts(Order order) {
         System.out.println(OutputMessage.GIFT_MENU_TITLE.getMessage());
-        System.out.println(order.toString());
+        System.out.println(order.show());
         System.out.println();
     }
 
@@ -54,7 +54,7 @@ public class ConsoleOutputView implements OutputView {
             return;
         }
         for (Discount discount : discountList) {
-            System.out.println(discount.toString());
+            System.out.println(discount.show());
         }
         System.out.println();
     }
@@ -73,7 +73,7 @@ public class ConsoleOutputView implements OutputView {
 
     public void showEventBadge(Badge badge) {
         System.out.println(OutputMessage.EVENT_BADGE_TITLE.getMessage());
-        System.out.println(badge.toString());
+        System.out.println(badge.show());
         System.out.println();
     }
 }

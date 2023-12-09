@@ -26,9 +26,4 @@ public class EventBadge implements Badge {
     public String show() {
         return name;
     }
-
-    @Override
-    public String toString() {
-        return name;
-    }
 }

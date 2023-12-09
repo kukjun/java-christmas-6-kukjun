@@ -49,8 +49,4 @@ public class WeekdayDiscount implements Discount {
         return "평일 할인: -" + NumberFormatter.formatNumber(discount()) + "원";
     }
 
-    @Override
-    public String toString() {
-        return "평일 할인: -" + NumberFormatter.formatNumber(discount()) + "원";
-    }
 }
