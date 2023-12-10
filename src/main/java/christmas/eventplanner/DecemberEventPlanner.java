@@ -1,12 +1,12 @@
 package christmas.eventplanner;
 
-import christmas.eventplanner.badge.BadgeImpl;
+import christmas.eventplanner.badge.Badge;
 import christmas.eventplanner.badge.EventBadge;
 import christmas.eventplanner.discount.*;
-import christmas.eventplanner.order.Order;
 import christmas.eventplanner.order.OrderImpl;
+import christmas.eventplanner.order.Order;
 import christmas.eventplanner.ui.EventPlannerUI;
-import christmas.eventplanner.util.constant.MenuItem;
+import christmas.eventplanner.order.menu.MenuItem;
 
 import java.util.LinkedList;
 import java.util.List;
@@ -16,7 +16,7 @@ import java.util.stream.Collectors;
 public class DecemberEventPlanner implements EventPlanner {
 
     private final EventPlannerUI ui;
-    private final List<DiscountImpl> benefitDiscounts = new LinkedList<>();
+    private final List<Discount> benefitDiscounts = new LinkedList<>();
 
     public DecemberEventPlanner(EventPlannerUI ui) {
         this.ui = ui;
@@ -25,7 +25,7 @@ public class DecemberEventPlanner implements EventPlanner {
     public void run() {
 
         int day = selectDays();
-        List<OrderImpl> orders = selectOrders(day);
+        List<Order> orders = selectOrders(day);
         findOrderSum(orders);
 
         // 증정
@@ -50,14 +50,14 @@ public class DecemberEventPlanner implements EventPlanner {
         return ui.inputRestaurantVisitDay();
     }
 
-    private List<OrderImpl> selectOrders(int day) {
+    private List<Order> selectOrders(int day) {
         ui.requireOrderAndCounts();
 
         Map<String, Integer> rawOrders = ui.inputOrderAndCounts();
         ui.showPreviewEvent(day);
 
-        List<OrderImpl> orders = rawOrders.entrySet().stream()
-                .map(entry -> new Order(MenuItem.getMenuItemByName(entry.getKey()), entry.getValue(), true))
+        List<Order> orders = rawOrders.entrySet().stream()
+                .map(entry -> new OrderImpl(MenuItem.getMenuItemByName(entry.getKey()), entry.getValue(), true))
                 .collect(Collectors.toList());
 
         ui.showOrderMenu(orders);
@@ -65,33 +65,33 @@ public class DecemberEventPlanner implements EventPlanner {
         return orders;
     }
 
-    private void findOrderSum(List<OrderImpl> orders) {
+    private void findOrderSum(List<Order> orders) {
         int orderPrice = 0;
-        for (OrderImpl order : orders) {
+        for (Order order : orders) {
             orderPrice += order.getOrderPrice();
         }
         ui.showOrderPriceBeforeDiscount(orderPrice);
     }
 
-    private void findGiftBenefit(List<OrderImpl> orders) {
+    private void findGiftBenefit(List<Order> orders) {
         GiftDiscount giftDiscount = new GiftDiscount(orders);
         if(giftDiscount.isBenefit()) {
-            Order order = new Order(MenuItem.CHAMPAGNE, 1, false);
+            OrderImpl order = new OrderImpl(MenuItem.CHAMPAGNE, 1, false);
             orders.add(order);
             benefitDiscounts.add(giftDiscount);
             ui.showGifts(order);
         }
     }
 
-    private void findDiscountBenefit(List<OrderImpl> orders, int day) {
-        List<DiscountImpl> discounts = new LinkedList<>();
+    private void findDiscountBenefit(List<Order> orders, int day) {
+        List<Discount> discounts = new LinkedList<>();
 
         discounts.add(new DDayDiscount(day, orders));
         discounts.add(new SpecialDiscount(day, orders));
         discounts.add(new WeekdayDiscount(day, orders));
         discounts.add(new WeekendDiscount(day, orders));
 
-        for (DiscountImpl discount : discounts) {
+        for (Discount discount : discounts) {
             if (discount.isBenefit()) {
                 benefitDiscounts.add(discount);
             }
@@ -103,16 +103,16 @@ public class DecemberEventPlanner implements EventPlanner {
 
     private int findBenefitSum() {
         int benefitSum = 0;
-        for(DiscountImpl discount : benefitDiscounts) {
+        for(Discount discount : benefitDiscounts) {
             benefitSum+= discount.discount();
         }
         ui.showSumBenefits(benefitSum);
         return benefitSum;
     }
 
-    private void findPayments(List<OrderImpl> orders, int benefitSum) {
+    private void findPayments(List<Order> orders, int benefitSum) {
         int totalOrderPrice = 0;
-        for (OrderImpl order : orders) {
+        for (Order order : orders) {
             totalOrderPrice += order.getOrderPrice();
         }
 
@@ -122,7 +122,7 @@ public class DecemberEventPlanner implements EventPlanner {
     }
 
     private void findBadge(int benefitSum) {
-        BadgeImpl badge = new EventBadge(benefitSum);
+        Badge badge = new EventBadge(benefitSum);
         ui.showEventBadge(badge);
     }
 

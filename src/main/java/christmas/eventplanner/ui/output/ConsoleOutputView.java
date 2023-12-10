@@ -1,10 +1,10 @@
 package christmas.eventplanner.ui.output;
 
-import christmas.eventplanner.badge.BadgeImpl;
-import christmas.eventplanner.discount.DiscountImpl;
-import christmas.eventplanner.order.OrderImpl;
+import christmas.eventplanner.badge.Badge;
+import christmas.eventplanner.discount.Discount;
+import christmas.eventplanner.order.Order;
 import christmas.eventplanner.util.NumberFormatter;
-import christmas.eventplanner.util.constant.ui.output.OutputMessage;
+import christmas.eventplanner.ui.output.constants.OutputMessage;
 
 import java.util.List;
 
@@ -26,9 +26,9 @@ public class ConsoleOutputView implements OutputView {
         System.out.println();
     }
 
-    public void showOrderMenu(List<OrderImpl> orders) {
+    public void showOrderMenu(List<Order> orders) {
         System.out.println(OutputMessage.ORDER_MENU_TITLE.getMessage());
-        for (OrderImpl order : orders) {
+        for (Order order : orders) {
             System.out.println(order.toString());
         }
         System.out.println();
@@ -40,21 +40,21 @@ public class ConsoleOutputView implements OutputView {
         System.out.println();
     }
 
-    public void showGifts(OrderImpl order) {
+    public void showGifts(Order order) {
         System.out.println(OutputMessage.GIFT_MENU_TITLE.getMessage());
-        System.out.println(order.toString());
+        System.out.println(order.show());
         System.out.println();
     }
 
-    public void showBenefits(List<DiscountImpl> discountList) {
+    public void showBenefits(List<Discount> discountList) {
         System.out.println(OutputMessage.BENEFITS_TITLE.getMessage());
         if(discountList.isEmpty()) {
             System.out.println(OutputMessage.NO_BENEFITS.getMessage());
             System.out.println();
             return;
         }
-        for (DiscountImpl discount : discountList) {
-            System.out.println(discount.toString());
+        for (Discount discount : discountList) {
+            System.out.println(discount.show());
         }
         System.out.println();
     }
@@ -71,9 +71,9 @@ public class ConsoleOutputView implements OutputView {
         System.out.println();
     }
 
-    public void showEventBadge(BadgeImpl badge) {
+    public void showEventBadge(Badge badge) {
         System.out.println(OutputMessage.EVENT_BADGE_TITLE.getMessage());
-        System.out.println(badge.toString());
+        System.out.println(badge.show());
         System.out.println();
     }
 }

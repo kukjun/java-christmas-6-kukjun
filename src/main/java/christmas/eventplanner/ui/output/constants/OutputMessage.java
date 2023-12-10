@@ -1,4 +1,4 @@
-package christmas.eventplanner.util.constant.ui.output;
+package christmas.eventplanner.ui.output.constants;
 
 public enum OutputMessage {
     START_EVENT_PLANNER("이벤트 플래너 시작!"),

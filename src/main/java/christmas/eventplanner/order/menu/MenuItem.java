@@ -1,4 +1,4 @@
-package christmas.eventplanner.util.constant;
+package christmas.eventplanner.order.menu;
 
 public enum MenuItem {
     // 애피타이저
@@ -38,6 +38,10 @@ public enum MenuItem {
         this.category = category;
         this.name = name;
         this.price = price;
+    }
+
+    public boolean isEqualCategoryName(String categoryName) {
+        return  category.equals(categoryName);
     }
 
     public String getCategory() {

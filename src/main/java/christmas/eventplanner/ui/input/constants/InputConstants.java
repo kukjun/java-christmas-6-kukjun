@@ -1,4 +1,4 @@
-package christmas.eventplanner.util.constant.ui.input;
+package christmas.eventplanner.ui.input.constants;
 
 public class InputConstants {
 

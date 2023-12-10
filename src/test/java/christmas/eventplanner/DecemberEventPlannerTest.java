@@ -2,7 +2,7 @@ package christmas.eventplanner;
 
 import camp.nextstep.edu.missionutils.test.NsTest;
 import christmas.Application;
-import christmas.eventplanner.util.constant.ui.input.InputError;
+import christmas.eventplanner.ui.input.constants.InputError;
 import org.junit.jupiter.api.Test;
 
 import static camp.nextstep.edu.missionutils.test.Assertions.assertSimpleTest;

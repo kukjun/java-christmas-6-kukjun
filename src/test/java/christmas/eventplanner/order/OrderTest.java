@@ -1,6 +1,6 @@
 package christmas.eventplanner.order;
 
-import christmas.eventplanner.util.constant.MenuItem;
+import christmas.eventplanner.order.menu.MenuItem;
 import org.junit.jupiter.api.Test;
 
 import static org.assertj.core.api.Assertions.assertThat;
@@ -14,7 +14,7 @@ class OrderTest {
         int expectedQuantity = 2;
 
         // when
-        OrderImpl order = new Order(expectedItem, expectedQuantity, true);
+        Order order = new OrderImpl(expectedItem, expectedQuantity, true);
 
         // then
         assertThat(order.getOrderPrice()).isEqualTo(expectedItem.getPrice()*expectedQuantity);
@@ -26,10 +26,10 @@ class OrderTest {
         int expectedQuantity = 2;
 
         // when
-        OrderImpl order = new Order(expectedItem, expectedQuantity, true);
+        Order order = new OrderImpl(expectedItem, expectedQuantity, true);
 
         // then
-        assertThat(order.toString()).isEqualTo(expectedItem.toString() + " " + expectedQuantity + "개");
+        assertThat(order.show()).isEqualTo(expectedItem.toString() + " " + expectedQuantity + "개");
     }
 
 }

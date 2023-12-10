@@ -1,8 +1,8 @@
 package christmas.eventplanner.ui;
 
-import christmas.eventplanner.badge.BadgeImpl;
-import christmas.eventplanner.discount.DiscountImpl;
-import christmas.eventplanner.order.OrderImpl;
+import christmas.eventplanner.badge.Badge;
+import christmas.eventplanner.discount.Discount;
+import christmas.eventplanner.order.Order;
 
 import java.util.List;
 import java.util.Map;
@@ -20,19 +20,19 @@ public interface EventPlannerUI {
 
     void showPreviewEvent(int day);
 
-    void showOrderMenu(List<OrderImpl> orders);
+    void showOrderMenu(List<Order> orders);
 
     void showOrderPriceBeforeDiscount(int orderPrice);
 
-    void showGifts(OrderImpl order);
+    void showGifts(Order order);
 
-    void showBenefits(List<DiscountImpl> discountList);
+    void showBenefits(List<Discount> discountList);
 
     void showSumBenefits(int sum);
 
     void showPaymentAmountAfterDiscount(int payment);
 
-    void showEventBadge(BadgeImpl badge);
+    void showEventBadge(Badge badge);
 
 
 }
