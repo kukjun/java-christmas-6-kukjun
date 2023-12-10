@@ -4,7 +4,7 @@ import christmas.eventplanner.badge.Badge;
 import christmas.eventplanner.discount.Discount;
 import christmas.eventplanner.order.Order;
 import christmas.eventplanner.util.NumberFormatter;
-import christmas.eventplanner.util.constant.ui.output.OutputMessage;
+import christmas.eventplanner.ui.output.constants.OutputMessage;
 
 import java.util.List;
 

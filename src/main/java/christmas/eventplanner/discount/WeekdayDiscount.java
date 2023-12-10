@@ -2,13 +2,14 @@ package christmas.eventplanner.discount;
 
 import christmas.eventplanner.order.Order;
 import christmas.eventplanner.util.NumberFormatter;
-import christmas.eventplanner.util.constant.discount.calendar.WeekdayDiscountCalendar;
-
+import christmas.eventplanner.discount.calendar.WeekdayDiscountCalendar;
 import java.util.List;
 
-import static christmas.eventplanner.util.constant.discount.DiscountConstants.*;
-
 public class WeekdayDiscount implements Discount {
+
+    public static final int MINIMUM_EVENT_DISCOUNT_PRICE = 10000;
+    public static final String DISCOUNT_CATEGORY = "디저트";
+    public static final int DEFAULT_DISCOUNT = 2023;
     private final int day;
     private final List<Order> orders;
 
@@ -21,8 +22,8 @@ public class WeekdayDiscount implements Discount {
     public int discount() {
         int discountSum = 0;
         for (Order order : orders) {
-            if (order.isEligibleForDiscount() && order.getMenuItemCategory().equals(WEEKDAY_DISCOUNT_CATEGORY)) {
-                discountSum += WEEKDAY_DEFAULT_DISCOUNT * order.getCount();
+            if (order.isEligibleForDiscount() && order.getMenuItemCategory().equals(DISCOUNT_CATEGORY)) {
+                discountSum += DEFAULT_DISCOUNT * order.getCount();
             }
         }
         return discountSum;
@@ -34,11 +35,11 @@ public class WeekdayDiscount implements Discount {
         boolean isDiscountCategory = false;
         for (Order order : orders) {
             sum += order.getOrderPrice();
-            if (order.getMenuItemCategory().equals(WEEKDAY_DISCOUNT_CATEGORY)) {
+            if (order.getMenuItemCategory().equals(DISCOUNT_CATEGORY)) {
                 isDiscountCategory = true;
             }
         }
-        if (sum >= WEEKDAY_MINIMUM_EVENT_DISCOUNT_PRICE && WeekdayDiscountCalendar.isDiscountDay(day) && isDiscountCategory) {
+        if (sum >= MINIMUM_EVENT_DISCOUNT_PRICE && WeekdayDiscountCalendar.isDiscountDay(day) && isDiscountCategory) {
             return true;
         }
         return false;

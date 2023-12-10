@@ -2,8 +2,7 @@ package christmas.eventplanner.discount;
 
 import christmas.eventplanner.order.OrderImpl;
 import christmas.eventplanner.order.Order;
-import christmas.eventplanner.util.constant.MenuItem;
-import christmas.eventplanner.util.constant.discount.DiscountConstants;
+import christmas.eventplanner.order.menu.MenuItem;
 import org.junit.jupiter.api.Test;
 
 import static org.assertj.core.api.Assertions.assertThat;
@@ -19,9 +18,9 @@ class DDayDiscountTest {
         // given
         List<Order> orders = new LinkedList<>();
         orders.add(new OrderImpl(MenuItem.CHOCOLATE_CAKE, 2, true));
-        int day = DiscountConstants.D_DAY_EVENT_START_DAY;
+        int day = DDayDiscount.EVENT_START_DAY;
 
-        int expectedDiscount = DiscountConstants.D_DAY_DEFAULT_DISCOUNT + DiscountConstants.D_DAY_DISCOUNT_UNIT * day;
+        int expectedDiscount = DDayDiscount.DEFAULT_DISCOUNT + DDayDiscount.DISCOUNT_UNIT * day;
 
         // when
         Discount discount = new DDayDiscount(day, orders);
@@ -35,7 +34,7 @@ class DDayDiscountTest {
     void 총_주문금액이_10000원_이하이면_할인조건확인_함수가_false값을_가진다() {
         List<Order> orders = new LinkedList<>();
         orders.add(new OrderImpl(MenuItem.ZERO_COLA, 2, true));
-        int day = DiscountConstants.D_DAY_EVENT_START_DAY;
+        int day = DDayDiscount.EVENT_START_DAY;
 
         boolean expectedIsBenefit = false;
 
@@ -51,7 +50,7 @@ class DDayDiscountTest {
     void 할인기간이_아니면_할인조건확인_함수가_false값을_가진다() {
         List<Order> orders = new LinkedList<>();
         orders.add(new OrderImpl(MenuItem.CHOCOLATE_CAKE, 2, true));
-        int day = DiscountConstants.D_DAY_EVENT_END_DAY + 3;
+        int day = DDayDiscount.EVENT_END_DAY + 3;
 
         boolean expectedIsBenefit = false;
 

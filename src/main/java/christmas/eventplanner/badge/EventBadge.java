@@ -1,25 +1,29 @@
 package christmas.eventplanner.badge;
 
-import christmas.eventplanner.util.constant.badge.BadgeItem;
 
 public class EventBadge implements Badge {
+
+    public static final String NONE_BADGE = "없음";
+    public static final String STAR_BADGE = "별";
+    public static final String TREE_BADGE = "트리";
+    public static final String SENTA_BADGE = "산타";
 
     private final String name;
 
     public EventBadge(int sumBenefit) {
         if (sumBenefit < 5000) {
-            this.name = BadgeItem.NONE_BADGE.getName();
+            this.name = NONE_BADGE;
             return;
         }
         if (sumBenefit < 10000) {
-            this.name = BadgeItem.STAR_BADGE.getName();
+            this.name = STAR_BADGE;
             return;
         }
         if (sumBenefit < 20000) {
-            this.name = BadgeItem.TREE_BADGE.getName();
+            this.name = TREE_BADGE;
             return;
         }
-        this.name = BadgeItem.SENTA_BADGE.getName();
+        this.name = SENTA_BADGE;
     }
 
     @Override

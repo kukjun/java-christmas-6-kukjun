@@ -1,4 +1,4 @@
-package christmas.eventplanner.util.constant.discount.calendar;
+package christmas.eventplanner.discount.calendar;
 
 public enum WeekdayDiscountCalendar {
     DAY_3(3), DAY_4(4), DAY_5(5), DAY_6(6), DAY_7(7),

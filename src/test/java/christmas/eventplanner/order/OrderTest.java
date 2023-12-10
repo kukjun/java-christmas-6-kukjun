@@ -1,6 +1,6 @@
 package christmas.eventplanner.order;
 
-import christmas.eventplanner.util.constant.MenuItem;
+import christmas.eventplanner.order.menu.MenuItem;
 import org.junit.jupiter.api.Test;
 
 import static org.assertj.core.api.Assertions.assertThat;

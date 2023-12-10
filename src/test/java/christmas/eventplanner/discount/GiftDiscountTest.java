@@ -2,8 +2,7 @@ package christmas.eventplanner.discount;
 
 import christmas.eventplanner.order.OrderImpl;
 import christmas.eventplanner.order.Order;
-import christmas.eventplanner.util.constant.MenuItem;
-import christmas.eventplanner.util.constant.discount.DiscountConstants;
+import christmas.eventplanner.order.menu.MenuItem;
 import org.junit.jupiter.api.Test;
 
 import java.util.LinkedList;
@@ -19,7 +18,7 @@ class GiftDiscountTest {
         orders.add(new OrderImpl(MenuItem.CHOCOLATE_CAKE, 2, true));
         orders.add(new OrderImpl(MenuItem.RED_WINE, 5, true));
 
-        int expectedDiscount = DiscountConstants.GIFT_DEFAULT_DISCOUNT;
+        int expectedDiscount = GiftDiscount.DEFAULT_DISCOUNT;
 
         // when
         Discount discount = new GiftDiscount(orders);

@@ -1,4 +1,4 @@
-package christmas.eventplanner.util.constant.discount.calendar;
+package christmas.eventplanner.discount.calendar;
 
 public enum SpecialDayDiscountCalendar {
 

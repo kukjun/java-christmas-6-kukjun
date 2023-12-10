@@ -1,6 +1,6 @@
 package christmas.eventplanner.order;
 
-import christmas.eventplanner.util.constant.MenuItem;
+import christmas.eventplanner.order.menu.MenuItem;
 
 public class OrderImpl implements Order {
     private final MenuItem menuItem;

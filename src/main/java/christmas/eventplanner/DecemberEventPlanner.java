@@ -6,7 +6,7 @@ import christmas.eventplanner.discount.*;
 import christmas.eventplanner.order.OrderImpl;
 import christmas.eventplanner.order.Order;
 import christmas.eventplanner.ui.EventPlannerUI;
-import christmas.eventplanner.util.constant.MenuItem;
+import christmas.eventplanner.order.menu.MenuItem;
 
 import java.util.LinkedList;
 import java.util.List;

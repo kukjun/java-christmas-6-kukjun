@@ -2,9 +2,8 @@ package christmas.eventplanner.discount;
 
 import christmas.eventplanner.order.OrderImpl;
 import christmas.eventplanner.order.Order;
-import christmas.eventplanner.util.constant.MenuItem;
-import christmas.eventplanner.util.constant.discount.DiscountConstants;
-import christmas.eventplanner.util.constant.discount.calendar.SpecialDayDiscountCalendar;
+import christmas.eventplanner.order.menu.MenuItem;
+import christmas.eventplanner.discount.calendar.SpecialDayDiscountCalendar;
 import org.junit.jupiter.api.Test;
 
 import java.util.LinkedList;
@@ -23,7 +22,7 @@ class SpecialDiscountTest {
 
         int day = SpecialDayDiscountCalendar.DAY_17.getDiscountDay();
 
-        int expectedDiscount = DiscountConstants.SPECIAL_DEFAULT_DISCOUNT;
+        int expectedDiscount = SpecialDiscount.DEFAULT_DISCOUNT;
 
         // when
         Discount discount = new SpecialDiscount(day, orders);

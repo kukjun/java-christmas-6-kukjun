@@ -2,14 +2,13 @@ package christmas.eventplanner.discount;
 
 import christmas.eventplanner.order.Order;
 import christmas.eventplanner.util.NumberFormatter;
-import christmas.eventplanner.util.constant.discount.calendar.SpecialDayDiscountCalendar;
-
+import christmas.eventplanner.discount.calendar.SpecialDayDiscountCalendar;
 import java.util.List;
 
-import static christmas.eventplanner.util.constant.discount.DiscountConstants.SPECIAL_DEFAULT_DISCOUNT;
-import static christmas.eventplanner.util.constant.discount.DiscountConstants.SPECIAL_MINIMUM_EVENT_DISCOUNT_PRICE;
-
 public class SpecialDiscount implements Discount {
+
+    public static final int MINIMUM_EVENT_DISCOUNT_PRICE = 10000;
+    public static final int DEFAULT_DISCOUNT = 1000;
 
     private final int day;
 
@@ -22,7 +21,7 @@ public class SpecialDiscount implements Discount {
 
     @Override
     public int discount() {
-        return SPECIAL_DEFAULT_DISCOUNT;
+        return DEFAULT_DISCOUNT;
     }
 
     @Override
@@ -31,7 +30,7 @@ public class SpecialDiscount implements Discount {
         for (Order order : orders) {
             sum += order.getOrderPrice();
         }
-        if (sum >= SPECIAL_MINIMUM_EVENT_DISCOUNT_PRICE && SpecialDayDiscountCalendar.isDiscountDay(day)) {
+        if (sum >= MINIMUM_EVENT_DISCOUNT_PRICE && SpecialDayDiscountCalendar.isDiscountDay(day)) {
             return true;
         }
         return false;
